@@ -39,6 +39,17 @@
                     <form method="post" action="inscription" class="form-horizontal" name="monForm">
                         <fieldset>
                             <legend>Vos informations</legend>
+
+                            <div class="form-group">
+                                <label for="prenom">Prénom :</label>
+                                <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Votre prénom..">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nom">Nom :</label>
+                                <input type="text" name="nom" id="nom" class="form-control" placeholder="Votre nom..">
+                            </div>
+
                             <div class="form-group" ng-class="{
                                     'has-success'
                                             : monForm.email.$valid && monForm.email.$dirty, 'has-error': monForm.email.$invalid && monForm.email.$dirty}">
