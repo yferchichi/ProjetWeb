@@ -14,49 +14,49 @@
     </head>
     <body>
         <%@include file="header.jsp"%>
-        
+
         <div class="container">
 
-		<div class="page-header">
+            <div class="page-header">
 
-			<h1 align="center">Bienvenue !</h1>
-			<hr style="	border-top: 3px double #8c8b8b;">
-		</div>
+                <h1 align="center">Bienvenue !</h1>
+                <hr style="	border-top: 3px double #8c8b8b;">
+            </div>
 
-	</div>
-	
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6" style="padding-right: 40px">
-				<img src="img/JNM-YOUSS.png" style="margin-bottom: 50px" class="img-rounded" alt="jnm 2018" width="90%"><br>
-				<fieldset>
-					<legend>Pas encore inscrit(e) ?</legend>
-					<center><a href="inscription.html"><button class="btn btn-success btn-lg">Créer un compte</button></a></center>
-				</fieldset>
-			</div>
-			<div class="col-md-6" style="padding-left: 50px">
-				<form method="get" action="" class="form-horizontal">
-					<fieldset>
-						<legend>Connectez-vous</legend>
-						<div class="form-group">
-							<label for="email">Votre E-mail :</label><br/>
-							<input type="email" name="email" id="email" class="form-control" placeholder="Tapez votre adresse ici">
-						</div>
-						<div class="form-group">					
-							<label for="mdp">Mot de passe :</label><br/>
-							<input type="password" name="motdepasse" id="mdp" class="form-control" placeholder="Votre mot de passe">
-						</div>
-						<center><button class="btn btn-primary">Se connecter</button></center>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-        
-        
-        
-        
-        
-        
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" style="padding-right: 40px">
+                    <img src="assets/img/JNM-YOUSS.png" style="margin-bottom: 50px" class="img-rounded" alt="jnm 2018" width="90%"><br>
+                    <fieldset>
+                        <legend>Pas encore inscrit(e) ?</legend>
+                        <center><a href="${pageContext.request.contextPath}/inscription"><button class="btn btn-success btn-lg">Créer un compte</button></a></center>
+                    </fieldset>
+                </div>
+                <div class="col-md-6" style="padding-left: 50px">
+                    <form method="get" action="/login" class="form-horizontal">
+                        <fieldset>
+                            <legend>Connectez-vous</legend>
+                            <div class="form-group">
+                                <label for="email">Votre E-mail :</label><br/>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="Tapez votre adresse ici">
+                            </div>
+                            <div class="form-group">					
+                                <label for="mdp">Mot de passe :</label><br/>
+                                <input type="password" name="motdepasse" id="mdp" class="form-control" placeholder="Votre mot de passe">
+                            </div>
+                            <center><button class="btn btn-primary">Se connecter</button></center>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
     </body>
 </html>
