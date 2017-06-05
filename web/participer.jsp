@@ -33,19 +33,10 @@
 
                         <strong>Info:</strong> Vous pouvez choisir et payer un pack <a href="${pageContext.request.contextPath}/packs">ici</a>. 
                     </div>
+                    <div ng-show="${requestScope.profil == 'etudiant'}">
 
-                    <form method="post" action="participer" name="monForm" class="form-horizontal">
+                        <form method="post" action="participer" name="monForm1" class="form-horizontal">                       
 
-                        <div class="form-group  ">
-                            <label for="profil">Vous êtes :</label>
-                            <select name="profil" id="profil" class="form-control" ng-model="monProfil">
-                                <option value="etudiant">Etudiant Miagiste</option>
-                                <option value="enseignant">Enseignant</option>
-                                <option value="entreprise">Entreprise partenaire</option>
-                            </select>
-                        </div>
-
-                        <div ng-show="monForm.profil.$viewValue == 'etudiant'">
 
                             <div class="form-group">
                                 <label for="datenaiss">Votre date de naissance :</label>
@@ -86,17 +77,41 @@
                             <div class="radio">
                                 <label><input type="radio" value="non" name="ancien" checked>Non</label>
                             </div>
+                            <input type="hidden" name="profil" id="profil" ng-model="profil" value="${requestScope.profil}">
 
-                        </div>
 
-                        <div ng-show="monForm.profil.$viewValue == 'enseignant'"> 
+                            <center><button type="submit" class="btn btn-success" style="margin-top: 20px">Confirmer</button></center>
+
+                            <!--<pre>{{monForm| json}}</pre>-->
+                        </form>
+                    </div>
+
+                    <div ng-show="monForm2.profil.$viewValue == 'enseignant'"> 
+
+
+                        <form method="post" action="participer" name="monForm2" class="form-horizontal">                       
+
+
+
 
                             <div class="well">Veuillez vous renseigner auprès de la Miage de Nice</div>
 
+                            <input type="hidden" name="profil" ng-model="profil" id="profil" value="${requestScope.profil}">
 
-                        </div>
 
-                        <div ng-show="monForm.profil.$viewValue == 'entreprise'"> 
+                            <center><button type="submit" class="btn btn-success" style="margin-top: 20px">Confirmer</button></center>
+
+                            <!--<pre>{{monForm| json}}</pre>-->
+                        </form>
+                    </div>
+
+
+                    <div ng-show="${requestScope.profil == 'entreprise'}"> 
+
+                        <form method="post" action="participer" name="monForm3" class="form-horizontal">                       
+
+
+
 
                             <div class="form-group">
                                 <label for="fonction">Fonction de l'entreprise :</label>
@@ -121,13 +136,15 @@
                                 <label for="secteur">Secteur d'activité :</label>
                                 <input type="text" name="secteur" id="secteur" class="form-control" placeholder="Exp: informatique">
                             </div>
-                        </div>
+                            <input type="hidden" name="profil" ng-model="profil" id="profil" value="${requestScope.profil}">
 
 
-                        <center><button class="btn btn-success" style="margin-top: 20px">Confirmer</button></center>
+                            <center><button type="submit" class="btn btn-success" style="margin-top: 20px">Confirmer</button></center>
 
-                        <!--<pre>{{monForm| json}}</pre>-->
-                    </form>
+                            <!--<pre>{{monForm| json}}</pre>-->
+                        </form>
+                    </div>
+
                 </div>
 
 

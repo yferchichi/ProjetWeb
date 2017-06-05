@@ -37,27 +37,6 @@ public class ServletInscription extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String email = request.getParameter("email");
-        String password = request.getParameter("motdepasse");
-        String prenom = request.getParameter("prenom");
-        String nom = request.getParameter("nom");
-        String resultat = null;
-        Utilisateur user = new Utilisateur();
-
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setPrenom(prenom);
-        user.setNom(nom);
-
-        Utilisateur u = userDao.addUser(user);
-
-        if (u != null) {
-            resultat = "Succès";
-        }
-        request.setAttribute("success", resultat);
-        System.out.println("Mail = " + email + " mot de passe = " + password);
-        this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,7 +51,8 @@ public class ServletInscription extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
+
     }
 
     /**
@@ -86,7 +66,33 @@ public class ServletInscription extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String email = request.getParameter("email");
+        String password = request.getParameter("motdepasse");
+        String prenom = request.getParameter("prenom");
+        String nom = request.getParameter("nom");
+        String profil = request.getParameter("profil");
+        String resultat = null;
+        Utilisateur user = new Utilisateur();
+
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setPrenom(prenom);
+        user.setNom(nom);
+        user.setProfil(profil);
+
+        Utilisateur u = userDao.addUser(user);
+        System.out.println("Mail = " + email + " mot de passe = " + password);
+
+        if (u != null) {
+            resultat = "Succès";
+            request.setAttribute("success", resultat);
+
+            response.sendRedirect(request.getContextPath() + "/login");
+        } else {
+            request.setAttribute("success", resultat);
+            this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
+
+        }
     }
 
     /**
