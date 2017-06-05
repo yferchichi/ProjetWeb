@@ -23,31 +23,14 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
  */
 @WebServlet(urlPatterns = {"/login"})
 public class ServletLogin extends HttpServlet {
-    
+
     @EJB
     private GestionnaireUtilisateurs gestionnaireUtilisateurs;
     Boolean success;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        HttpSession session = request.getSession();
-        
-        String email = request.getParameter("email");
-        String password = request.getParameter("motdepasse");
-        Utilisateur u = gestionnaireUtilisateurs.findUserByEmail(email, password);
-        if (u != null) {
-            session.setAttribute("sessionUser", u);
-            response.sendRedirect(request.getContextPath() + "/participer");
-        } else {
-            success = false;
-            request.setAttribute("success", success);
-            this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);            
-            
-        }
-        
-        System.out.println("Mon mail = " + email + " Mon mot de passe = " + password);
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -62,7 +45,8 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+
     }
 
     /**
@@ -76,7 +60,22 @@ public class ServletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+
+        String email = request.getParameter("email");
+        String password = request.getParameter("motdepasse");
+        Utilisateur u = gestionnaireUtilisateurs.findUserByEmail(email, password);
+        if (u != null) {
+            session.setAttribute("sessionUser", u);
+            response.sendRedirect(request.getContextPath() + "/participer");
+        } else {
+            success = false;
+            request.setAttribute("success", success);
+            this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+
+        }
+
+        System.out.println("Mon mail = " + email + " Mon mot de passe = " + password);
     }
 
     /**
