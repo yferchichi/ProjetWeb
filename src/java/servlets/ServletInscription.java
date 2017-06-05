@@ -5,13 +5,15 @@ package servlets;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import gestionnaires.GestionnaireUtilisateurs;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modeles.Utilisateur;
 
 /**
  *
@@ -19,6 +21,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/inscription"})
 public class ServletInscription extends HttpServlet {
+
+    @EJB
+    GestionnaireUtilisateurs userDao;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,11 +40,28 @@ public class ServletInscription extends HttpServlet {
         this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
 
         String email = request.getParameter("email");
-        String password1 = request.getParameter("motdepasse");
+        String password = request.getParameter("motdepasse");
         String prenom = request.getParameter("prenom");
         String nom = request.getParameter("nom");
+        boolean success = false;
 
-        System.out.println("Mail = " + email + " mot de passe = " + password1);
+        Utilisateur user = new Utilisateur();
+
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setPrenom(prenom);
+        user.setNom(nom);
+
+        Utilisateur u = userDao.addUser(user);
+
+        if (u != null) {
+            success = true;
+        }
+
+        request.setAttribute("success", success);
+
+        System.out.println("Mail = " + email + " mot de passe = " + password);
+        this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
 
     }
 

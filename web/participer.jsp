@@ -91,7 +91,7 @@
 
                         <div ng-show="monForm.profil.$viewValue == 'enseignant'"> 
 
-                            <div class="well">Veuillez vous renseigner</div>
+                            <div class="well">Veuillez vous renseigner auprès de la Miage de Nice</div>
 
 
                         </div>

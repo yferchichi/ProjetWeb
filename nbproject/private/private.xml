@@ -2,19 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/inscription.jsp</file>
+            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/locaux.jsp</file>
             <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletInscription.java</file>
             <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletParticiper.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/packs.jsp</file>
             <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/header.jsp</file>
+            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/gestionnaires/GestionnaireUtilisateurs.java</file>
             <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletLogin.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/participer.jsp</file>
+            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/modeles/Utilisateur.java</file>
             <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/login.jsp</file>
         </group>
-=======
-        <group/>
->>>>>>> 104172e32507e1fd064fb23a6729ad77e49895d3
     </open-files>
 </project-private>

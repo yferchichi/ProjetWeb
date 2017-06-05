@@ -30,12 +30,14 @@
         <div class="container" style="padding-bottom: 30px">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="alert alert-success alert-dismissable fade in">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
-                        <strong>Succès!</strong> Veuiilez cliquer <a href="${pageContext.request.contextPath}/participer">ici</a> pour renseigner toutes vos informations et paticiper.
+                    <div ng-show="${requestScope.success} == true">
+                        <div class="alert alert-success alert-dismissable fade in">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+                            <strong>Succès!</strong> Veuiilez cliquer <a href="${pageContext.request.contextPath}/participer">ici</a> pour renseigner toutes vos informations et paticiper.
+                        </div>
                     </div>
-
                     <form method="post" action="inscription" class="form-horizontal" name="monForm">
                         <fieldset>
                             <legend>Vos informations</legend>
