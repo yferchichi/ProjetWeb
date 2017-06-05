@@ -32,10 +32,17 @@
                         <a href="${pageContext.request.contextPath}/packs">Procéder au paiement</a>
                     </li>
 
-                    <li>
-                        <a href="${pageContext.request.contextPath}/login">Se connecter</a>
-                    </li>
+                    <c:if test="${empty sessionUser}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/login">Se connecter</a>
+                        </li>
+                    </c:if>
 
+                    <c:if test="${not empty sessionUser}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/logout">Se déconnecter</a>
+                        </li>
+                    </c:if>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

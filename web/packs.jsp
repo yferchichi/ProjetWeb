@@ -114,12 +114,13 @@
                                     <p class="help-block" ng-show="payForm.code.$invalid && payForm.code.$dirty">Code invalide</p>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{'has-error':payForm.nom.$invalid && payForm.nom.$dirty, 'has-success':payForm.nom.$valid && payForm.nom.$dirty}">
                                     <label for="nom">Nom du détenteur :</label>
-                                    <input type="text" name="nom" id="nom" class="form-control" required>
+                                    <input type="text" name="nom" id="nom" ng-model="nom" ng-minlength="4" class="form-control" required>
+                                    <p class="help-block" ng-show="payForm.nom.$invalid && payForm.nom.$dirty">Trop court</p>
                                 </div>
 
-                                <button class="btn btn-success btn-block" style="margin-top: 20px">Confirmer le paiement</button>
+                                <button class="btn btn-success btn-block" ng-disabled="payForm.code.$invalid || payForm.num.$invalid || payForm.nom.$invalid" style="margin-top: 20px">Confirmer le paiement</button>
                             </form>
 
                         </fieldset>

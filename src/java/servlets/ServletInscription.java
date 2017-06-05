@@ -36,7 +36,8 @@ public class ServletInscription extends HttpServlet {
 
         String email = request.getParameter("email");
         String password1 = request.getParameter("motdepasse");
-        String password2 = request.getParameter("motdepasse2");
+        String prenom = request.getParameter("prenom");
+        String nom = request.getParameter("nom");
 
         System.out.println("Mail = " + email + " mot de passe = " + password1);
 

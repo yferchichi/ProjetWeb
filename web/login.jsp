@@ -20,7 +20,7 @@
             <div class="page-header">
 
                 <h1 align="center">Bienvenue !</h1>
-                <hr style="	border-top: 3px double #8c8b8b;">
+                <hr style="border-top: 3px double #8c8b8b;">
             </div>
 
         </div>
@@ -35,6 +35,13 @@
                     </fieldset>
                 </div>
                 <div class="col-md-6" style="padding-left: 50px">
+
+                    <div style="margin-bottom: 30px" ng-show="${requestScope.success} == false">
+
+                        <div class="alert alert-danger">
+                            <strong>Echec!</strong> Utilisateur inexistant.
+                        </div>
+                    </div>
                     <form method="get" action="/login" class="form-horizontal">
                         <fieldset>
                             <legend>Connectez-vous</legend>
@@ -52,11 +59,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </body>
 </html>

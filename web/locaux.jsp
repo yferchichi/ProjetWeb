@@ -28,7 +28,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-5" style="margin-bottom: 30px">
 
                     <h4>Nous sommes ici !</h4>
 

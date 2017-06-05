@@ -68,13 +68,13 @@
 
                             <div class="form-group" style="margin-bottom: 30px" ng-class="{
                                     'has-success'
-                                            : !monForm.motdepasse2.$error.pattern && monForm.motdepasse2.$dirty, 'has-error' :monForm.motdepasse2.$error.pattern && monForm.motdepasse2.$dirty }">
+                                            : !monForm.motdepasse2.$error.pattern && monForm.motdepasse2.$dirty && monForm.motdepasse2.$valid, 'has-error' :monForm.motdepasse2.$error.pattern && monForm.motdepasse2.$dirty && monForm.motdepasse2.$invalid }">
                                 <label for="mdp2">Confirmation mot de passe :</label>
                                 <input type="password" name="motdepasse2" id="mdp2" ng-model="pwd2" class="form-control" ng-minlength="6" placeholder="Confirmer votre mot de passe" ng-pattern="pwd1" required>
                                 <p class="help-block" ng-show="monForm.motdepasse2.$error.pattern">Mots de passes non conformes</p>
                             </div>
 
-                            <button class="btn btn-success btn-block">Valider</button>
+                            <button ng-disabled="monForm.motdepasse.$invalid || monForm.email.$invalid || monForm.motdepasse2.$invalid" class="btn btn-success btn-block">Valider</button>
 
                         </fieldset>
                         <!--<pre>{{monForm | json}}</pre>-->

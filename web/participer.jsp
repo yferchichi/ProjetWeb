@@ -49,7 +49,7 @@
 
                             <div class="form-group">
                                 <label for="datenaiss">Votre date de naissance :</label>
-                                <input type="date" name="birthday" id="datenaiss" class="form-control">
+                                <input type="date" name="birthday" id="datenaiss" class="form-control" required>
                             </div>
 
 
@@ -84,13 +84,14 @@
                                 <label><input type="radio" value="oui" name="ancien">Oui</label>
                             </div>
                             <div class="radio">
-                                <label><input type="radio" value="non" name="ancien">Non</label>
+                                <label><input type="radio" value="non" name="ancien" checked>Non</label>
                             </div>
 
                         </div>
 
                         <div ng-show="monForm.profil.$viewValue == 'enseignant'"> 
 
+                            <div class="well">Veuillez vous renseigner</div>
 
 
                         </div>
