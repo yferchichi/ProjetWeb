@@ -75,6 +75,14 @@
                                 <input type="password" name="motdepasse2" id="mdp2" ng-model="pwd2" class="form-control" ng-minlength="6" placeholder="Confirmer votre mot de passe" ng-pattern="pwd1" required>
                                 <p class="help-block" ng-show="monForm.motdepasse2.$error.pattern">Mots de passes non conformes</p>
                             </div>
+                            <div class="form-group  ">
+                                <label for="profil">Vous êtes :</label>
+                                <select name="profil" id="profil" class="form-control" ng-model="monProfil">
+                                    <option value="etudiant">Etudiant Miagiste</option>
+                                    <option value="enseignant">Enseignant</option>
+                                    <option value="entreprise">Entreprise partenaire</option>
+                                </select>
+                            </div>
 
                             <button ng-disabled="monForm.motdepasse.$invalid || monForm.email.$invalid || monForm.motdepasse2.$invalid" class="btn btn-success btn-block">Valider</button>
 

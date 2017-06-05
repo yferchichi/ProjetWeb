@@ -6,22 +6,12 @@
 package modeles;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
-/**
- *
- * <<<<<<< HEAD @a
- *
- *
- * uthor Youssef ======= @author TOSHIBA PC >>>>>>> 104172e32
- *
- * 507e1fd064fb23a6729ad77e49895d3
- */
+
 @Entity
 public class Utilisateur implements Serializable {
 
@@ -37,7 +27,6 @@ public class Utilisateur implements Serializable {
     private String birthDate;
     private String nomMiage;
     private Integer diplome;
-    private String fonctionEnt;
     private String functionEnt;
     private String nomEnt;
     private String telEnt;
@@ -109,15 +98,6 @@ public class Utilisateur implements Serializable {
 
     public void setNomMiage(String nomMiage) {
         this.nomMiage = nomMiage;
-    }
-
-    public String getFonctionEnt() {
-        return fonctionEnt;
-    }
-
-    public void setFonctionEnt(String fonctionEnt) {
-        this.fonctionEnt = fonctionEnt;
-
     }
 
     public void setDiplome(Integer diplome) {

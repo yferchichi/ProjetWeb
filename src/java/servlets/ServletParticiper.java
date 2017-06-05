@@ -23,7 +23,7 @@ import modeles.Utilisateur;
  */
 @WebServlet(name = "ServletParticiper", urlPatterns = {"/participer"})
 public class ServletParticiper extends HttpServlet {
-    
+
     @EJB
     GestionnaireUtilisateurs gestionnaire;
 
@@ -37,6 +37,44 @@ public class ServletParticiper extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Utilisateur u = (Utilisateur) session.getAttribute("sessionUser");
+            request.setAttribute("profil", u.getProfil());
+            this.getServletContext().getRequestDispatcher("/participer.jsp").forward(request, response);
+
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
+
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session != null) {
@@ -56,7 +94,7 @@ public class ServletParticiper extends HttpServlet {
                 u.setProfil(profil);
             } else {
                 u.setProfil(profil);
-                u.setFonctionEnt(request.getParameter("fonction"));
+                u.setFunctionEnt(request.getParameter("fonction"));
                 u.setTelEnt(request.getParameter("telephone"));
                 u.setAdresseEnt(request.getParameter("adresse"));
                 u.setNomEnt(request.getParameter("entreprisenom"));
@@ -65,39 +103,10 @@ public class ServletParticiper extends HttpServlet {
             gestionnaire.UpdateUser(u);
             session.setAttribute("sessionUser", u);
             this.getServletContext().getRequestDispatcher("/packs.jsp").forward(request, response);
-            
+
         } else {
             response.sendRedirect(request.getContextPath() + "/login");
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
