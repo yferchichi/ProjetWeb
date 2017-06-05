@@ -29,6 +29,10 @@
                     </li>
 
                     <li>
+                        <a href="${pageContext.request.contextPath}/packs">Procéder au paiement</a>
+                    </li>
+
+                    <li>
                         <a href="${pageContext.request.contextPath}/login">Se connecter</a>
                     </li>
 

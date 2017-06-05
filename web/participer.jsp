@@ -36,7 +36,7 @@
 
                     <form method="post" action="participer" name="monForm" class="form-horizontal">
 
-                        <div class="form-group">
+                        <div class="form-group  ">
                             <label for="profil">Vous êtes :</label>
                             <select name="profil" id="profil" class="form-control" ng-model="monProfil">
                                 <option value="etudiant">Etudiant Miagiste</option>
