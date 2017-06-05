@@ -35,6 +35,8 @@ public class ServletPacks extends HttpServlet {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
+
+            System.out.println(request.getParameter("formula") + "VOILAAA");
             this.getServletContext().getRequestDispatcher("/packs.jsp").forward(request, response);
 
         } else {

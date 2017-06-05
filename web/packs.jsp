@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="myApp" ng-controller="packCtrl">
     <head>
         <%@include file="liens.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -37,7 +37,8 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false, pack = '1'"  style="margin-top: 20px">Choisir</a> 
+                                <a href="#paying" class="btn btn-primary btn-lg" ng-click="show = true;
+                                                valeur(1, 110)" ng-init="show = false"  style="margin-top: 20px">Choisir ce pack</a> 
                             </p>
                         </div>
                     </div>
@@ -55,7 +56,8 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false, pack = '2'" style="margin-top: 20px">Choisir</a> 
+                                <a href="#paying" class="btn btn-primary btn-lg" ng-click="show = true;
+                                                valeur(2, 160)" ng-init="show = false" style="margin-top: 20px">Choisir ce pack</a> 
                             </p>
                         </div>
                     </div>
@@ -73,7 +75,8 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false, pack = '3'"  style="margin-top: 20px">Choisir</a> 
+                                <a href="#paying" class="btn btn-primary btn-lg" ng-click="show = true;
+                                                valeur(3, 100)" ng-init="show = false"  style="margin-top: 20px">Choisir ce pack</a> 
                             </p>
                         </div>
                     </div>
@@ -81,13 +84,13 @@
             </div>
         </div>
 
-        <div ng-show="show">
+        <div ng-show="show" id="paying">
             <div class="container" style="margin-top: 30px; margin-bottom: 30px">
                 <div class="row">
                     <div class="col-md-7">
                         <fieldset>
                             <legend><span class="glyphicon glyphicon-credit-card"></span> Procéder au paiement </legend>
-                            <form method="post" action="payer" name="payForm" class="form-horizontal">
+                            <form method="post" action="packs" name="payForm" class="form-horizontal">
 
                                 <div class="form-group">
                                     <label>Type de carte bancaire :</label>
@@ -116,14 +119,17 @@
 
                                 <div class="form-group" ng-class="{
                                         'has-error'
-                                        :payForm.nom.$invalid && payForm.nom.$dirty, 'has-success':payForm.nom.$valid && payForm.nom.$dirty}">
+                                                :payForm.nom.$invalid && payForm.nom.$dirty, 'has-success':payForm.nom.$valid && payForm.nom.$dirty}">
                                     <label for="nom">Nom du détenteur :</label>
                                     <input type="text" name="nom" id="nom" ng-model="nom" ng-minlength="4" class="form-control" required>
                                     <p class="help-block" ng-show="payForm.nom.$invalid && payForm.nom.$dirty">Trop court</p>
                                 </div>
 
-                                <input type="hidden" name="formula" ng-model="formula" ng-value="formula = pack">
+                                <input type="hidden" name="formula" id="pack" ng-model="formula" class="form-control">
 
+                                <div class="form-group">
+                                    <label>Somme à régler : </label><h4>{{prix}} &euro;</h4>
+                                </div>
                                 <button class="btn btn-success btn-block" ng-disabled="payForm.code.$invalid || payForm.num.$invalid || payForm.nom.$invalid" style="margin-top: 20px">Confirmer le paiement</button>
                             </form>
 
@@ -135,10 +141,21 @@
                         <div class="well" style="margin-left: 50px; margin-top: 100px"><p><strong>Règlements:</strong> vous pouvez également régler par virement bancaire. 
                                 Nous vous confiremeront votre inscription dans les plus brefs délais.</p></div>
 
-
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <script>
+                var app = angular.module('myApp', []);
+                app.controller('packCtrl', function ($scope) {
+                    $scope.valeur = function (numPack, prix) {
+                        $scope.formula = numPack;
+                        $scope.prix = prix;
+
+                    }
+                });
+        </script>
     </body>
 </html>
