@@ -15,7 +15,11 @@ import java.util.Date;
 
 /**
  *
+<<<<<<< HEAD
  * @author Youssef
+=======
+ * @author TOSHIBA PC
+>>>>>>> 104172e32507e1fd064fb23a6729ad77e49895d3
  */
 @Entity
 public class Utilisateur implements Serializable {
@@ -32,7 +36,11 @@ public class Utilisateur implements Serializable {
     private String birthDate;
     private String nomMiage;
     private Integer diplome;
+<<<<<<< HEAD
     private String fonctionEnt;
+=======
+    private String functionEnt;
+>>>>>>> 104172e32507e1fd064fb23a6729ad77e49895d3
     private String nomEnt;
     private String telEnt;
     private String adresseEnt;
@@ -105,12 +113,29 @@ public class Utilisateur implements Serializable {
         this.nomMiage = nomMiage;
     }
 
+<<<<<<< HEAD
     public String getFonctionEnt() {
         return fonctionEnt;
     }
 
     public void setFonctionEnt(String fonctionEnt) {
         this.fonctionEnt = fonctionEnt;
+=======
+    public Integer getDiplome() {
+        return diplome;
+    }
+
+    public void setDiplome(Integer diplome) {
+        this.diplome = diplome;
+    }
+
+    public String getFunctionEnt() {
+        return functionEnt;
+    }
+
+    public void setFunctionEnt(String functionEnt) {
+        this.functionEnt = functionEnt;
+>>>>>>> 104172e32507e1fd064fb23a6729ad77e49895d3
     }
 
     public String getNomEnt() {
@@ -153,6 +178,7 @@ public class Utilisateur implements Serializable {
         this.numPack = numPack;
     }
 
+<<<<<<< HEAD
     public Integer getDiplome() {
         return diplome;
     }
@@ -161,6 +187,8 @@ public class Utilisateur implements Serializable {
         this.diplome = diplome;
     }
 
+=======
+>>>>>>> 104172e32507e1fd064fb23a6729ad77e49895d3
     public Integer getPaidPack() {
         return paidPack;
     }
@@ -201,6 +229,7 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "modeles.Utilisateur[ id=" + id + " ]";
     }
+<<<<<<< HEAD
     /*
      * To change this license header, choose License Headers in Project Properties.
      * To change this template file, choose Tools | Templates
@@ -208,3 +237,12 @@ public class Utilisateur implements Serializable {
      */
 
 }
+=======
+
+}
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+>>>>>>> 104172e32507e1fd064fb23a6729ad77e49895d3
