@@ -37,14 +37,11 @@ public class ServletInscription extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
-
         String email = request.getParameter("email");
         String password = request.getParameter("motdepasse");
         String prenom = request.getParameter("prenom");
         String nom = request.getParameter("nom");
-        boolean success = false;
-
+        String resultat = null;
         Utilisateur user = new Utilisateur();
 
         user.setEmail(email);
@@ -55,11 +52,9 @@ public class ServletInscription extends HttpServlet {
         Utilisateur u = userDao.addUser(user);
 
         if (u != null) {
-            success = true;
+            resultat = "Succès";
         }
-
-        request.setAttribute("success", success);
-
+        request.setAttribute("success", resultat);
         System.out.println("Mail = " + email + " mot de passe = " + password);
         this.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
 

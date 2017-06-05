@@ -36,13 +36,13 @@
                 </div>
                 <div class="col-md-6" style="padding-left: 50px">
 
-                    <div style="margin-bottom: 30px" ng-show="${requestScope.success} == false">
+                   <!-- <div style="margin-bottom: 30px" ng-show="${requestScope.success == false}">
 
                         <div class="alert alert-danger">
                             <strong>Echec!</strong> Utilisateur inexistant.
                         </div>
-                    </div>
-                    <form method="get" action="/login" class="form-horizontal">
+                    </div>-->
+                    <form method="post" action="login" class="form-horizontal">
                         <fieldset>
                             <legend>Connectez-vous</legend>
                             <div class="form-group">

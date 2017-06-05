@@ -31,13 +31,13 @@
             <div class="row">
                 <div class="col-md-8">
 
-                    <div ng-show="${requestScope.success} == true">
+                    <c:if test="${not empty requestScope.success}">
                         <div class="alert alert-success alert-dismissable fade in">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
                             <strong>Succès!</strong> Veuiilez cliquer <a href="${pageContext.request.contextPath}/participer">ici</a> pour renseigner toutes vos informations et paticiper.
                         </div>
-                    </div>
+                    </c:if>
                     <form method="post" action="inscription" class="form-horizontal" name="monForm">
                         <fieldset>
                             <legend>Vos informations</legend>
