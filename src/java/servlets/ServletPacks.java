@@ -5,7 +5,6 @@ package servlets;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -47,7 +47,7 @@ public class ServletPacks extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        this.getServletContext().getRequestDispatcher("/packs.jsp").forward(request, response);
     }
 
     /**
@@ -61,7 +61,29 @@ public class ServletPacks extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            String type = request.getParameter("type");
+            String num = request.getParameter("num");
+            String code = request.getParameter("code");
+            String name = request.getParameter("nom");
+            String formula = request.getParameter("formula");
+            if (formula.equals("1")) {
+                formula = "Vous avez souscrit la formule";
+            }
+            if (formula.equals("2")) {
+                formula = "Vous avez souscrit la formule diplômé(e)";
+            }
+            if (formula.equals("3")) {
+                formula = "Vous avez souscrit la formule diplômé(e) sans hébergement";
+            }
+            request.setAttribute("result", formula);
+            this.getServletContext().getRequestDispatcher("/packs.jsp").forward(request, response);
+
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
     }
 
     /**
