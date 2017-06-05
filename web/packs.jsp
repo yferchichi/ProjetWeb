@@ -37,7 +37,7 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false"  style="margin-top: 20px">Choisir</a> 
+                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false, pack = '1'"  style="margin-top: 20px">Choisir</a> 
                             </p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false" style="margin-top: 20px">Choisir</a> 
+                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false, pack = '2'" style="margin-top: 20px">Choisir</a> 
                             </p>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false"  style="margin-top: 20px">Choisir</a> 
+                                <a href="#" class="btn btn-primary btn-lg" ng-click="show = true" ng-init="show = false, pack = '3'"  style="margin-top: 20px">Choisir</a> 
                             </p>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="form-group" ng-class="{
                                         'has-error'
-                                        :payForm.num.$invalid && payForm.num.$dirty, 'has-success':payForm.num.$valid && payForm.num.$dirty}">
+                                                :payForm.num.$invalid && payForm.num.$dirty, 'has-success':payForm.num.$valid && payForm.num.$dirty}">
                                     <label for="num">N° de Carte :</label>
                                     <input type="text" name="num" ng-model="num" id="num" class ="form-control" ng-minlength="16" ng-maxlength="16">
                                     <p class="help-block" ng-show="payForm.num.$invalid && payForm.num.$dirty">Numéro de carte invalide</p>
@@ -108,17 +108,21 @@
 
                                 <div class="form-group" ng-class="{
                                         'has-error'
-                                        :payForm.code.$invalid && payForm.code.$dirty, 'has-success':payForm.code.$valid && payForm.code.$dirty}">
+                                                :payForm.code.$invalid && payForm.code.$dirty, 'has-success':payForm.code.$valid && payForm.code.$dirty}">
                                     <label for="code">Code de sécurité :</label>
                                     <input type="text" name="code" id="code" ng-model="code" class="form-control" ng-minlength="3" ng-maxlength="3">
                                     <p class="help-block" ng-show="payForm.code.$invalid && payForm.code.$dirty">Code invalide</p>
                                 </div>
 
-                                <div class="form-group" ng-class="{'has-error':payForm.nom.$invalid && payForm.nom.$dirty, 'has-success':payForm.nom.$valid && payForm.nom.$dirty}">
+                                <div class="form-group" ng-class="{
+                                        'has-error'
+                                        :payForm.nom.$invalid && payForm.nom.$dirty, 'has-success':payForm.nom.$valid && payForm.nom.$dirty}">
                                     <label for="nom">Nom du détenteur :</label>
                                     <input type="text" name="nom" id="nom" ng-model="nom" ng-minlength="4" class="form-control" required>
                                     <p class="help-block" ng-show="payForm.nom.$invalid && payForm.nom.$dirty">Trop court</p>
                                 </div>
+
+                                <input type="hidden" name="formula" ng-model="formula" ng-value="formula = pack">
 
                                 <button class="btn btn-success btn-block" ng-disabled="payForm.code.$invalid || payForm.num.$invalid || payForm.nom.$invalid" style="margin-top: 20px">Confirmer le paiement</button>
                             </form>

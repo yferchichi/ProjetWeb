@@ -67,6 +67,7 @@ public class ServletLogin extends HttpServlet {
         Utilisateur u = gestionnaireUtilisateurs.findUserByEmail(email, password);
         if (u != null) {
             session.setAttribute("sessionUser", u);
+            System.out.println("Connexion OK!");
             response.sendRedirect(request.getContextPath() + "/participer");
         } else {
             success = false;
