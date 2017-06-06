@@ -22,7 +22,7 @@
                         </li>
                     </c:if>
                     <li>
-                        <a href="#">Voter</a>
+                        <a href="${pageContext.request.contextPath}/voter">Voter</a>
                     </li>
 
                     <li>
