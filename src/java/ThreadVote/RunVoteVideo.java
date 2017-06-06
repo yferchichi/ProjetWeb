@@ -14,7 +14,7 @@ public class RunVoteVideo implements Runnable {
     @Override
     public void run() {
         Long tempstart = System.currentTimeMillis();
-        Long tempsEnd = System.currentTimeMillis();
+        Long tempsEnd = tempstart;
         while (tempsEnd >= tempstart + 1800000) {
             tempsEnd = System.currentTimeMillis();
             System.out.println("RunVoteVideo.run()");

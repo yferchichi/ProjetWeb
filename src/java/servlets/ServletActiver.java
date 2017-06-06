@@ -43,7 +43,8 @@ public class ServletActiver extends HttpServlet {
         RunVotePull pull;
         if (nom.equals("video")) {
             if (etat.equals("activer")) {
-                if (servletContext.getAttribute("runvotevideo") != null) {
+                if (servletContext.getAttribute("thread1") != null && ((Thread) servletContext.getAttribute("thread1")).isAlive()) {
+                    request.setAttribute("message", "Vote de vidéo déjà activé!");
 
                 } else {
                     RunVoteVideo r = new RunVoteVideo();
@@ -56,7 +57,7 @@ public class ServletActiver extends HttpServlet {
                 }
 
             } else {
-                if (servletContext.getAttribute("runvotevideo") != null) {
+                if (servletContext.getAttribute("thread1") != null && ((Thread) servletContext.getAttribute("thread1")).isAlive()) {
                     run = (RunVoteVideo) servletContext.getAttribute("runvotevideo");
                     t1 = new Thread(run);
                     t1.stop();
@@ -64,12 +65,14 @@ public class ServletActiver extends HttpServlet {
                     request.setAttribute("message", "Vote de vidéo désactivé!");
 
                 } else {
+                    request.setAttribute("message", "Vote de vidéo déjà désactivé!");
 
                 }
             }
         } else {
             if (etat.equals("activer")) {
-                if (servletContext.getAttribute("runvotepull") != null) {
+                if (servletContext.getAttribute("thread2") != null && ((Thread) servletContext.getAttribute("thread2")).isAlive()) {
+                    request.setAttribute("message", "Vote de pull déjà activé!");
 
                 } else {
                     RunVotePull r = new RunVotePull();
@@ -82,7 +85,7 @@ public class ServletActiver extends HttpServlet {
                 }
 
             } else {
-                if (servletContext.getAttribute("runvotepull") != null) {
+                if (servletContext.getAttribute("thread2") != null && ((Thread) servletContext.getAttribute("thread2")).isAlive()) {
                     pull = (RunVotePull) servletContext.getAttribute("RunVotePull");
                     t2 = new Thread(pull);
                     t2.stop();
@@ -90,6 +93,7 @@ public class ServletActiver extends HttpServlet {
                     request.setAttribute("message", "Vote de pull désactivé!");
 
                 } else {
+                    request.setAttribute("message", "Vote de pull déjà activé!");
 
                 }
             }

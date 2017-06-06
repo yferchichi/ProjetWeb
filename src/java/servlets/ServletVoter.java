@@ -88,11 +88,11 @@ public class ServletVoter extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletContext servletContext = this.getServletContext();
-        Thread t1 = (Thread) servletContext.getAttribute("thread2");
+        Thread t1 = (Thread) servletContext.getAttribute("thread1");
         Thread t2 = (Thread) servletContext.getAttribute("thread2");
         if (t1 != null && t1.isAlive()) {
             request.setAttribute("thread1", "OK");
-
+            System.out.println("J'ai reçuok'");
         } else {
             request.setAttribute("thread1", "KO");
 
