@@ -3,19 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/modeles/Vote.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/inscription.jsp</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/administrer.jsp</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/packs.jsp</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/header.jsp</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletActiver.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletVoter.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletPacks.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletUsers.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/accueil.jsp</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/voter.jsp</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/src/java/modeles/Utilisateur.java</file>
-            <file>file:/C:/Users/Youssef/Documents/NetBeansProjects/ProjetWeb/web/participer.jsp</file>
+            <file>file:/C:/Users/TOSHIBA%20PC/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletVoter.java</file>
+            <file>file:/C:/Users/TOSHIBA%20PC/Documents/NetBeansProjects/ProjetWeb/src/java/servlets/ServletActiver.java</file>
+            <file>file:/C:/Users/TOSHIBA%20PC/Documents/NetBeansProjects/ProjetWeb/src/java/ThreadVote/RunVoteVideo.java</file>
+            <file>file:/C:/Users/TOSHIBA%20PC/Documents/NetBeansProjects/ProjetWeb/src/java/ThreadVote/RunVotePull.java</file>
+            <file>file:/C:/Users/TOSHIBA%20PC/Documents/NetBeansProjects/ProjetWeb/web/voter.jsp</file>
+            <file>file:/C:/Users/TOSHIBA%20PC/Documents/NetBeansProjects/ProjetWeb/src/java/modeles/Utilisateur.java</file>
         </group>
     </open-files>
 </project-private>
