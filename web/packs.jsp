@@ -141,7 +141,7 @@
                         <div ng-show="visible" style="margin-left: 50px;">
                             <div class="alert alert-info alert-dismissable fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Info!</strong> Si vous êtes une entreprise partenaire ne payez pas et contacez la MIAGE de Nice.  
+                                <span class="glyphicon glyphicon-exclamation-sign"></span><strong> Info!</strong> Si vous êtes une entreprise partenaire ne payez pas et contacez la MIAGE de Nice.  
                             </div>
                         </div>
                     </div>

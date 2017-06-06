@@ -57,7 +57,7 @@ public class ServletUsers extends HttpServlet {
 
         request.setAttribute("allUsers", allUsers);
 
-        this.getServletContext().getRequestDispatcher("/listUsers.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/administrer.jsp").forward(request, response);
     }
 
     /**
