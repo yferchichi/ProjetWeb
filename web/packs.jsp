@@ -87,7 +87,7 @@
                     <div class="col-md-7">
                         <fieldset>
                             <legend><span class="glyphicon glyphicon-credit-card"></span> Procéder au paiement </legend>
-                            <form method="post" action="packs" name="payForm" class="form-horizontal">
+                            <form method="post" action="packs" name="payForm" class="form-horizontal" >
 
                                 <div class="form-group">
                                     <label>Type de carte bancaire :</label>
@@ -138,12 +138,12 @@
                         <div class="well" style="margin-left: 50px; margin-top: 100px"><p><strong>Règlements:</strong> vous pouvez également régler par virement bancaire. 
                                 Nous vous confiremeront votre inscription dans les plus brefs délais.</p></div>
 
-                        <c:if test="${not empty requestScope.result}">
+                        <div ng-show="visible" style="margin-left: 50px;">
                             <div class="alert alert-info alert-dismissable fade in">
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                <strong>Info:</strong> ${result}  
+                                <strong>Info!</strong> Si vous êtes une entreprise partenaire ne payez pas et contacez la MIAGE de Nice.  
                             </div>
-                        </c:if>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,12 +151,17 @@
 
         <script>
                 var app = angular.module('myApp', []);
-                app.controller('packCtrl', function ($scope) {
+                app.controller('packCtrl', function ($scope, $timeout) {
                     $scope.valeur = function (numPack, prix) {
                         $scope.formula = numPack;
                         $scope.prix = prix;
-
                     }
+
+                    $timeout(function () {
+                        $scope.visible = true;
+                    }, 4000);
+
+
                 });
         </script>
     </body>

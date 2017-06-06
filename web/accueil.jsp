@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-sm-8">
                     <h2>Présentation</h2>
-                    <p>Chaque année, depuis la création de la formation, le réseau MIAGE tout entier se donne rendez-vous dans une ville différente pour les Journées Nationales MIAGE. Cet évènement annuel, qui se déroule sur 3 jours, rassemble plus de 400 étudiants. En 2018, les JNM se dérouleront au coeur de la technopôle à Sophia Antipolis.</p>
+                    <p>Chaque année, depuis la création de la formation, le réseau MIAGE tout entier se donne rendez-vous dans une ville différente pour les Journées Nationales MIAGE. Cet évènement annuel, qui se déroule sur 3 jours, rassemble plus de 400 étudiants. En 2018, les JNM se dérouleront au coeur de la technopôle de Sophia Antipolis.</p>
 
 
                 </div>
@@ -53,12 +53,12 @@
                 <div class="col-sm-6">
                     <img class="img-circle img-responsive img-center" src="assets/img/maphoto.jpg" alt="Youssef" width="50%">
                     <h2 align="center">Youssef Ferchichi</h2>
-                    <p style="margin-right: 20px">The images are set to be circular and responsive. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                    <h5 align="center">Master 1 MIAGE - Développeur Back-end</h5>
                 </div>
                 <div class="col-sm-6">
                     <img class="img-circle img-responsive img-center" src="assets/img/junior.jpg" alt="Junior" width="40%">
                     <h2 align="center">Junior Noubissi</h2>
-                    <p style="margin-left: 20px">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                    <h5 align="center">Master 1 MIAGE - Développeur Back-end</h5>
                 </div>
             </div>
             <!-- /.row -->
