@@ -43,7 +43,7 @@
                             <legend>Vos informations</legend>
 
                             <div class="form-group">
-                                <label for="prenom">Prénom :</label>
+                                <label for="prenom">Prénom/Raison sociale :</label>
                                 <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Votre prénom..">
                             </div>
 
