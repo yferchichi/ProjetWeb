@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.ejb.EJB;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -66,7 +67,7 @@ public class ServletVoter extends HttpServlet {
             vote.setListChoices(listChoices);
             gestionnaire.addVote(vote);
             request.setAttribute("message", "Vous avez voté!");
-            this.getServletContext().getRequestDispatcher("/voter.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);
 
         } else {
             response.sendRedirect(request.getContextPath() + "/login");
@@ -86,6 +87,23 @@ public class ServletVoter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ServletContext servletContext = this.getServletContext();
+        Thread t1 = (Thread) servletContext.getAttribute("thread2");
+        Thread t2 = (Thread) servletContext.getAttribute("thread2");
+        if (t1 != null && t1.isAlive()) {
+            request.setAttribute("thread1", "OK");
+
+        } else {
+            request.setAttribute("thread1", "KO");
+
+        }
+        if (t2 != null && t2.isAlive()) {
+            request.setAttribute("thread2", "OK");
+
+        } else {
+            request.setAttribute("thread2", "KO");
+
+        }
         this.getServletContext().getRequestDispatcher("/voter.jsp").forward(request, response);
     }
 
