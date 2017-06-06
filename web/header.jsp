@@ -17,6 +17,12 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+
+                    <c:if test="${not empty sessionUser}">
+                        <li>
+                            <a href="#">Bienvenue, ${sessionScope.sessionUser.prenom}</a>
+                        </li>
+                    </c:if>
                     <c:if test="${not empty sessionUser}">
                         <li>
                             <a href="${pageContext.request.contextPath}/participer">Participer</a>
@@ -42,29 +48,19 @@
                         </li>
                     </c:if>
 
+                    <c:if test="${sessionScope.sessionUser.profil == 'admin'}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/users">Administrer</a>
+                        </li>
+                    </c:if>
+
                     <c:if test="${not empty sessionUser}">
                         <li>
                             <a href="${pageContext.request.contextPath}/logout">Se déconnecter</a>
                         </li>
                     </c:if>
 
-                    <c:if test="${sessionScope.sessionUser.profil == 'admin'}">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/users">Tous les utilisateurs</a>
-                        </li>
-                    </c:if>
 
-                    <c:if test="${sessionScope.sessionUser.profil == 'admin'}">
-                        <li>
-                            <a href="${pageContext.request.contextPath}/manage">Gérer votes</a>
-                        </li>
-                    </c:if>
-
-                    <c:if test="${not empty sessionUser}">
-                        <li>
-                            <a href="#">Bienvenue, ${sessionScope.sessionUser.prenom}</a>
-                        </li>
-                    </c:if>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
