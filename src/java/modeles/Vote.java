@@ -30,7 +30,7 @@ public class Vote implements Serializable {
     private Date beginDate;
     private Date enDate;
     private Long idAuthor;
-    private Collection<String> listChoices;
+    private Collection<Choice> listChoices;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -67,11 +67,11 @@ public class Vote implements Serializable {
     }
 
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    public Collection<String> getListChoices() {
+    public Collection<Choice> getListChoices() {
         return listChoices;
     }
 
-    public void setListChoices(Collection<String> listChoices) {
+    public void setListChoices(Collection<Choice> listChoices) {
         this.listChoices = listChoices;
     }
 
@@ -92,7 +92,6 @@ public class Vote implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Vote)) {
             return false;
         }
