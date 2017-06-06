@@ -111,16 +111,16 @@
                         <form method="post" action="participer" name="monForm3" class="form-horizontal">                       
 
 
-
-
                             <div class="form-group">
                                 <label for="fonction">Fonction de l'entreprise :</label>
                                 <input type="text" name="fonction" id="fonction" class="form-control" placeholder="Fonction de l'entreprise..">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" ng-class="{'has-error':monForm3.telephone.$invalid && monForm3.telephone.$dirty,
+											'has-success':monForm3.telephone.$valid && monForm3.telephone.$dirty}">
                                 <label for="tel">Téléphone :</label>
-                                <input type="text" name="telephone" id="tel" class="form-control" placeholder="Numéro de téléphone..">
+                                <input type="text" name="telephone" ng-model="telephone" ng-minlength="10" ng-maxlength="10" id="tel" class="form-control" placeholder="Numéro de téléphone..">
+                                <p class="help-block" ng-show="monForm3.telephone.$invalid && monForm3.telephone.$dirty">Numéro non valide</p>
                             </div>
 
                             <div class="form-group">

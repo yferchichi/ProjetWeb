@@ -50,49 +50,60 @@
                 </div>
             </div>
 
-        </div>
-
-        <div class="container" style="margin-bottom: 20px; margin-top: 50px">
-            <div class="row">
+            <div class="row" style="margin-top: 50px">
                 <div class="col-md-12">
-                    <table class="table table-hover table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>E-mail</th>
-                                <th>Prénom</th>
-                                <th>Nom</th>
-                                <th>Profil</th>
-                                <th>Nom Miage</th>
-                                <th>Nom Entreprise</th>
-                                <th>Numéro pack</th>
-                                <th>Inscription</th>
-
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                            <c:forEach var="user" items="${requestScope['allUsers']}">
-                                <tr>
-                                    <td>${user.id}</td>
-                                    <td>${user.email}</td>
-                                    <td>${user.prenom}</td>
-                                    <td>${user.nom}</td>
-                                    <td>${user.profil}</td>
-                                    <td>${user.nomMiage}</td>
-                                    <td>${user.nomEnt}</td>
-                                    <td>${user.numPack}</td>
-                                    <td><button type="button" class="btn btn-info btn-sm">
-                                            <span class="glyphicon glyphicon-ok-circle"></span> Valider
-                                        </button></td>
-
-
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                    <div class="alert alert-info alert-dismissable fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <span class="glyphicon glyphicon-exclamation-sign"></span><strong> Information: </strong> ${requestScope.message}.  
+                    </div>
                 </div>
+
             </div>
         </div>
-    </body>
+
+    </div>
+
+    <div class="container" style="margin-bottom: 20px; margin-top: 50px">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>E-mail</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Profil</th>
+                            <th>Nom Miage</th>
+                            <th>Nom Entreprise</th>
+                            <th>Numéro pack</th>
+                            <th>Inscription</th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <c:forEach var="user" items="${requestScope['allUsers']}">
+                            <tr>
+                                <td>${user.id}</td>
+                                <td>${user.email}</td>
+                                <td>${user.prenom}</td>
+                                <td>${user.nom}</td>
+                                <td>${user.profil}</td>
+                                <td>${user.nomMiage}</td>
+                                <td>${user.nomEnt}</td>
+                                <td>${user.numPack}</td>
+                                <td><button type="button" class="btn btn-info btn-sm">
+                                        <span class="glyphicon glyphicon-ok-circle"></span> Valider
+                                    </button></td>
+
+
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
