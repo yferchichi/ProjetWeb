@@ -5,13 +5,21 @@
  */
 package servlets;
 
+import gestionnaires.GestionnaireUtilisateurs;
+import gestionnaires.GestionnaireVotes;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modeles.Choice;
+import modeles.Utilisateur;
+import modeles.Vote;
 
 /**
  *
@@ -28,10 +36,42 @@ public class ServletVoter extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     *
      */
+    @EJB
+    GestionnaireVotes gestionnaire;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            Utilisateur person = (Utilisateur) session.getAttribute("sessionUser");
+            String premier = request.getParameter("premier");
+            String deuxieme = request.getParameter("deuxieme");
+            String troisieme = request.getParameter("trois");
+            String sujet = request.getParameter("sujet");
+            Vote vote = new Vote();
+            vote.setIdAuthor(person.getId());
+            vote.setSubject(sujet);
+            Choice c = new Choice();
+            c.setContent(premier);
+            ArrayList<Choice> listChoices = new ArrayList<Choice>();
+            listChoices.add(c);
+            Choice c1 = new Choice();
+            c1.setContent(deuxieme);
+            listChoices.add(c1);
+            Choice c2 = new Choice();
+            c2.setContent(troisieme);
+            listChoices.add(c2);
+            vote.setListChoices(listChoices);
+            gestionnaire.addVote(vote);
+            request.setAttribute("message", "Vous avez voté!");
+            this.getServletContext().getRequestDispatcher("/voter.jsp").forward(request, response);
+
+        } else {
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -46,7 +86,7 @@ public class ServletVoter extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          this.getServletContext().getRequestDispatcher("/voter.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/voter.jsp").forward(request, response);
     }
 
     /**

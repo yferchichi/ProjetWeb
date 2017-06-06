@@ -7,7 +7,6 @@ package modeles;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -27,8 +26,7 @@ public class Vote implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
     private String subject;
-    private Date beginDate;
-    private Date enDate;
+    private Date isValited;
     private Long idAuthor;
     private Collection<Choice> listChoices;
 
@@ -50,20 +48,12 @@ public class Vote implements Serializable {
         this.subject = subject;
     }
 
-    public Date getBeginDate() {
-        return beginDate;
+    public Date getIsValited() {
+        return isValited;
     }
 
-    public void setBeginDate(Date beginDate) {
-        this.beginDate = beginDate;
-    }
-
-    public Date getEnDate() {
-        return enDate;
-    }
-
-    public void setEnDate(Date enDate) {
-        this.enDate = enDate;
+    public void setIsValited(Date isValited) {
+        this.isValited = isValited;
     }
 
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)

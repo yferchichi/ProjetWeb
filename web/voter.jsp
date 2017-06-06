@@ -115,6 +115,7 @@
                                     </select>
                                 </div>
 
+                                <input type="hidden" name="sujet" value="video">
                                 <button class="btn btn-success">Confirmer votre vote</button>
 
                             </form>
@@ -212,6 +213,7 @@
 
                                     </select>
                                 </div>
+                                <input type="hidden" name="sujet" value="pull">
 
                                 <button class="btn btn-success">Confirmer votre vote</button>
 
