@@ -10,16 +10,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">Accueil</a>
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/accueil">Accueil</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-
-                    <li>
-                        <a href="${pageContext.request.contextPath}/participer">Participer</a>
-                    </li>
+                    <c:if test="${not empty sessionUser}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/participer">Participer</a>
+                        </li>
+                    </c:if>
                     <li>
                         <a href="#">Voter</a>
                     </li>
@@ -28,10 +29,11 @@
                         <a href="${pageContext.request.contextPath}/locaux">Nous trouver</a>
                     </li>
 
-                    <li>
-                        <a href="${pageContext.request.contextPath}/packs">Procéder au paiement</a>
-                    </li>
-
+                    <c:if test="${not empty sessionUser}">
+                        <li>
+                            <a href="${pageContext.request.contextPath}/packs">Procéder au paiement</a>
+                        </li>
+                    </c:if>
                     <c:if test="${empty sessionUser}">
                         <li>
                             <a href="${pageContext.request.contextPath}/login">Se connecter</a>

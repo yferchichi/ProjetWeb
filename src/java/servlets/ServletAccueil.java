@@ -1,24 +1,23 @@
-package servlets;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package servlets;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Youssef
  */
-@WebServlet(urlPatterns = {"/packs"})
-public class ServletPacks extends HttpServlet {
+@WebServlet(name = "ServletAccueil", urlPatterns = {"/accueil"})
+public class ServletAccueil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,6 +30,7 @@ public class ServletPacks extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher("/accueil.jsp").forward(request, response);
 
     }
 
@@ -46,7 +46,7 @@ public class ServletPacks extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/packs.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -60,32 +60,7 @@ public class ServletPacks extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("je suis entré");
-        HttpSession session = request.getSession(false);
-        if (session != null) {
-            
-            String type = request.getParameter("type");
-            String num = request.getParameter("num");
-            String code = request.getParameter("code");
-            String name = request.getParameter("nom");
-            String formula = request.getParameter("formula");
-            
-            if (formula.equals("1")) {
-                formula = "Vous avez souscrit la formule!";
-            }
-            if (formula.equals("2")) {
-                formula = "Vous avez souscrit la formule diplômé(e)!";
-            }
-            if (formula.equals("3")) {
-                formula = "Vous avez souscrit la formule diplômé(e) sans hébergement!";
-            }
-            
-            request.setAttribute("result", formula);
-            this.getServletContext().getRequestDispatcher("/packs.jsp").forward(request, response);
-
-        } else {
-            response.sendRedirect(request.getContextPath() + "/login");
-        }
+        processRequest(request, response);
     }
 
     /**

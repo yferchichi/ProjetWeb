@@ -50,7 +50,7 @@ public class GestionnaireUtilisateurs {
     }
 
     public Boolean UpdateUser(Utilisateur u) {
-        em.refresh(u);
+        em.merge(u);
         return true;
     }
 

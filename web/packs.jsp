@@ -37,8 +37,7 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#paying" class="btn btn-primary btn-lg" ng-click="show = true;
-                                                valeur(1, 110)" ng-init="show = false"  style="margin-top: 20px">Choisir ce pack</a> 
+                                <a href="#paying" class="btn btn-primary btn-lg" ng-disabled="${sessionScope.sessionUser.profil == 'etudiant' && sessionScope.sessionUser.diplome == 0}" ng-click="valeur(1, 110)"  style="margin-top: 20px">Choisir ce pack</a> 
                             </p>
                         </div>
                     </div>
@@ -56,8 +55,7 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#paying" class="btn btn-primary btn-lg" ng-click="show = true;
-                                                valeur(2, 160)" ng-init="show = false" style="margin-top: 20px">Choisir ce pack</a> 
+                                <a href="#paying" class="btn btn-primary btn-lg" ng-disabled="${sessionScope.sessionUser.profil == 'etudiant' && sessionScope.sessionUser.diplome == 1}" ng-click="valeur(2, 160)"  style="margin-top: 20px">Choisir ce pack</a> 
                             </p>
                         </div>
                     </div>
@@ -75,8 +73,7 @@
                                 Transport sur Sophia.
                             </p>
                             <p>
-                                <a href="#paying" class="btn btn-primary btn-lg" ng-click="show = true;
-                                                valeur(3, 100)" ng-init="show = false"  style="margin-top: 20px">Choisir ce pack</a> 
+                                <a href="#paying" class="btn btn-primary btn-lg" ng-disabled="${sessionScope.sessionUser.profil == 'etudiant' && sessionScope.sessionUser.diplome == 1}" ng-click="valeur(3, 100)"   style="margin-top: 20px">Choisir ce pack</a> 
                             </p>
                         </div>
                     </div>
@@ -84,7 +81,7 @@
             </div>
         </div>
 
-        <div ng-show="show" id="paying">
+        <div id="paying">
             <div class="container" style="margin-top: 30px; margin-bottom: 30px">
                 <div class="row">
                     <div class="col-md-7">
@@ -141,11 +138,16 @@
                         <div class="well" style="margin-left: 50px; margin-top: 100px"><p><strong>Règlements:</strong> vous pouvez également régler par virement bancaire. 
                                 Nous vous confiremeront votre inscription dans les plus brefs délais.</p></div>
 
+                        <c:if test="${not empty requestScope.result}">
+                            <div class="alert alert-info alert-dismissable fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong>Info:</strong> ${result}  
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <script>
                 var app = angular.module('myApp', []);
