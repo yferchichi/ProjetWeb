@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4>Vote concours Vidéo</h4>
-                    <button type="button" class="btn btn-info btn-sm" style="margin-right: 5px;" ng-disabled="${requestScope.thread1 == 'KO'}" ng-click="show1 = true" ng-init="show1 = false">
+                    <button type="button" class="btn btn-info btn-sm" style="margin-right: 5px;" ng-disabled="${requestScope.thread11 == 'KO'}" ng-click="show1 = true" ng-init="show1 = false">
                         <span class="glyphicon glyphicon-plus"></span> Défiler
                     </button>
 
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-md-6">
                     <h4>Vote concours Pull</h4>
-                    <button type="button" class="btn btn-info btn-sm" style="margin-right: 5px" ng-disabled="${requestScope.thread2 == 'KO'}" ng-click="show = true" ng-init="show = false" >
+                    <button type="button" class="btn btn-info btn-sm" style="margin-right: 5px" ng-disabled="${requestScope.thread22 == 'KO'}" ng-click="show = true" ng-init="show = false" >
                         <span class="glyphicon glyphicon-plus"></span> Défiler 
                     </button>
 

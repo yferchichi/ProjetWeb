@@ -7,13 +7,18 @@ package servlets;
 
 import ThreadVote.RunVotePull;
 import ThreadVote.RunVoteVideo;
+import gestionnaires.GestionnaireUtilisateurs;
 import java.io.IOException;
+import java.util.Collection;
+import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modeles.StateVote;
+import modeles.Utilisateur;
 
 /**
  *
@@ -22,6 +27,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ServletActiver", urlPatterns = {"/activer"})
 public class ServletActiver extends HttpServlet {
 
+    @EJB
+    GestionnaireUtilisateurs userDao;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,35 +40,34 @@ public class ServletActiver extends HttpServlet {
      */
     Thread t1;
     Thread t2;
+    StateVote stateVote;
+    private static final String ATT_DAO_FACTORY = "initier";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ServletContext servletContext = this.getServletContext();
+        if (((StateVote) getServletContext().getAttribute(ATT_DAO_FACTORY)) != null) {
+            this.stateVote = ((StateVote) getServletContext().getAttribute(ATT_DAO_FACTORY));
+
+        } else {
+            stateVote = new StateVote();
+        }
         String nom = request.getParameter("nom");
         String etat = request.getParameter("etat");
-        RunVoteVideo run;
-        RunVotePull pull;
         if (nom.equals("video")) {
             if (etat.equals("activer")) {
-                if (servletContext.getAttribute("thread1") != null && ((Thread) servletContext.getAttribute("thread1")).isAlive()) {
+                if (stateVote != null && stateVote.getStateVideo().equals("actif")) {
                     request.setAttribute("message", "Vote de vidéo déjà activé!");
 
                 } else {
-                    RunVoteVideo r = new RunVoteVideo();
-                    t1 = new Thread(r);
-                    t1.start();
-                    servletContext.setAttribute("runvotevideo", r);
-                    servletContext.setAttribute("thread1", t1);
+                    ((StateVote) getServletContext().getAttribute(ATT_DAO_FACTORY)).setStateVideo("actif");
                     request.setAttribute("message", "Vote de vidéo activé!");
 
                 }
 
             } else {
-                if (servletContext.getAttribute("thread1") != null && ((Thread) servletContext.getAttribute("thread1")).isAlive()) {
-                    run = (RunVoteVideo) servletContext.getAttribute("runvotevideo");
-                    t1 = new Thread(run);
-                    t1.stop();
-                    servletContext.setAttribute("thread1", t1);
+                if (stateVote.getStateVideo() != null && (stateVote.getStateVideo().equals("actif"))) {
+                    ((StateVote) getServletContext().getAttribute(ATT_DAO_FACTORY)).setStateVideo("inactif");
+                    System.out.println("Je me suis désactivé");
                     request.setAttribute("message", "Vote de vidéo désactivé!");
 
                 } else {
@@ -71,25 +77,20 @@ public class ServletActiver extends HttpServlet {
             }
         } else {
             if (etat.equals("activer")) {
-                if (servletContext.getAttribute("thread2") != null && ((Thread) servletContext.getAttribute("thread2")).isAlive()) {
+                if (stateVote.getStatePull() != null && stateVote.getStatePull().equals("actif")) {
                     request.setAttribute("message", "Vote de pull déjà activé!");
 
                 } else {
-                    RunVotePull r = new RunVotePull();
-                    t2 = new Thread(r);
-                    t2.start();
-                    servletContext.setAttribute("runvotepull", r);
-                    servletContext.setAttribute("thread2", t2);
+                    ((StateVote) getServletContext().getAttribute(ATT_DAO_FACTORY)).setStatePull("actif");
+                    System.out.println("Je me suis activé");
                     request.setAttribute("message", "Vote de pull activé!");
 
                 }
 
             } else {
-                if (servletContext.getAttribute("thread2") != null && ((Thread) servletContext.getAttribute("thread2")).isAlive()) {
-                    pull = (RunVotePull) servletContext.getAttribute("RunVotePull");
-                    t2 = new Thread(pull);
-                    t2.stop();
-                    servletContext.setAttribute("thread2", t2);
+                if (stateVote.getStatePull() != null && stateVote.getStatePull().equals("actif")) {
+                    ((StateVote) getServletContext().getAttribute(ATT_DAO_FACTORY)).setStatePull("inactif");
+                    System.out.println("Je me suis désactivé");
                     request.setAttribute("message", "Vote de pull désactivé!");
 
                 } else {
@@ -99,6 +100,7 @@ public class ServletActiver extends HttpServlet {
             }
 
         }
+        Collection<Utilisateur> allUsers = userDao.findAllUsers();
         this.getServletContext().getRequestDispatcher("/administrer.jsp").forward(request, response);
 
     }
